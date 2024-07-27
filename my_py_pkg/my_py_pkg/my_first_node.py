@@ -6,7 +6,7 @@ def main(args=None):
 
     node = Node(node_name="py_test")
     node.get_logger().info("Hello ROS2!")
-
+    rclpy.spin(node)
     rclpy.shutdown()
 
 if __name__ == "__main__": 
