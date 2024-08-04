@@ -1,5 +1,6 @@
 import rclpy # ROS library
 from rclpy.node import Node
+from example_interfaces.msg import String
 
 class RobotNewsStationNode(Node): 
     def __init__(self): 
