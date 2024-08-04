@@ -7,6 +7,8 @@ class RobotNewsStationNode(Node):
         super().__init__("robot_news_station")
 
         self.publisher = self.create_publisher(String, "robot_news", 10)
+        self.timer = self.create_timer(0.5, self.publish_news)
+        self.get_logger().info("Robot News Station has been Started")
 
     def publish_news(self): 
         msg = String()
