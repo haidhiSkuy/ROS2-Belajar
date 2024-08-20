@@ -1,4 +1,5 @@
 #include "rclcpp/rclcpp.hpp" 
+#include "example_interfaces/msg/string.hpp"
 #include <string>
 
 class RobotNewsStationNode: public rclcpp::Node
