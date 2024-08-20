@@ -8,7 +8,7 @@ class Smartphone(Node):
         self.get_logger().info("Smartphone has been started")
         self.subscriber = self.create_subscription(
             String, 
-            "robot_news", # publisher name 
+            "robot_news", # publisher topic name 
             self.callback_robot_news,
             10
         )
