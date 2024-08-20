@@ -7,10 +7,13 @@ class RobotNewsStationNode: public rclcpp::Node
     public:
         RobotNewsStationNode(): Node("robot_news_station")
         {
-            RCLCPP_INFO(this->get_logger(), "Hello ROS2 CPP");  
+            RCLCPP_INFO(this->get_logger(), "Hello This is publisher");  
 
 
         }
+
+    private: 
+        rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher;
 
 };
 
