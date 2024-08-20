@@ -8,11 +8,18 @@ class RobotNewsStationNode: public rclcpp::Node
         RobotNewsStationNode(): Node("robot_news_station")
         {
             RCLCPP_INFO(this->get_logger(), "Hello This is publisher");  
-
+            publisher = this->create_publisher<example_interfaces::msg::String>("robot_news", 10);
 
         }
 
-    private: 
+    private:
+        void publishNews()
+        { 
+            auto msg = example_interfaces::msg::String();
+            msg.data = "hello"; 
+            publisher->publish(msg);  
+        }
+
         rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher;
 
 };
