@@ -8,8 +8,13 @@ class RobotNewsStationNode: public rclcpp::Node
         RobotNewsStationNode(): Node("robot_news_station")
         {
             RCLCPP_INFO(this->get_logger(), "Hello This is publisher");  
+
             publisher = this->create_publisher<example_interfaces::msg::String>("robot_news", 10);
 
+            timer_ = this->create_wall_timer(
+                std::chrono::seconds(1),
+                std::bind(&RobotNewsStationNode::publishNews, this)
+            );
         }
 
     private:
@@ -21,7 +26,7 @@ class RobotNewsStationNode: public rclcpp::Node
         }
 
         rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher;
-
+        rclcpp::TimerBase::SharedPtr timer_;
 };
 
 int main(int argc, char** argv)
