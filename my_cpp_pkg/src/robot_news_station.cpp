@@ -8,7 +8,7 @@ class RobotNewsStationNode: public rclcpp::Node
         RobotNewsStationNode(): Node("robot_news_station")
         {
             RCLCPP_INFO(this->get_logger(), "Hello This is publisher");  
-
+                                                                        //robot_news is the name of topic you want to send data to it
             publisher = this->create_publisher<example_interfaces::msg::String>("robot_news", 10);
 
             timer_ = this->create_wall_timer(
