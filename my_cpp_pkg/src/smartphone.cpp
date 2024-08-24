@@ -8,9 +8,19 @@ class Smartphone: public rclcpp::Node
         Smartphone(): Node("smartphone")
         { 
             RCLCPP_INFO(this->get_logger(), "Hello this is subscriber");  
+
+            subscriber = this->create_subscription<example_interfaces::msg::String>(
+                "robot_news", 10, std::bind(&Smartphone::SubscribeNews, this, std::placeholders::_1)
+            );
+        
         }
 
     private: 
+        void SubscribeNews(const example_interfaces::msg::String::SharedPtr msg)
+        {
+            RCLCPP_INFO(this->get_logger(), msg->data.c_str());
+        }
+
 
         rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr subscriber;
 }; 
