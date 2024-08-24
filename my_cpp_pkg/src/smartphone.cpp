@@ -7,8 +7,12 @@ class Smartphone: public rclcpp::Node
     public: 
         Smartphone(): Node("smartphone")
         { 
-
+            RCLCPP_INFO(this->get_logger(), "Hello this is subscriber");  
         }
+
+    private: 
+
+        rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr subscriber;
 
 }; 
 
