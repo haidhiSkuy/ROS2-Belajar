@@ -1,6 +1,7 @@
 #include "rclcpp/rclcpp.hpp" 
 #include "example_interfaces/msg/string.hpp"
 #include <string>
+#include <sstream> 
 
 class RobotNewsStationNode: public rclcpp::Node
 { 
@@ -21,10 +22,16 @@ class RobotNewsStationNode: public rclcpp::Node
         void publishNews()
         { 
             auto msg = example_interfaces::msg::String();
-            msg.data = "hello"; 
+            std::ostringstream oss;
+            oss << "Hello " << counter; 
+
+            msg.data = oss.str();
             publisher->publish(msg);  
+
+            counter += 1;
         }
 
+        int counter = 1; 
         rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher;
         rclcpp::TimerBase::SharedPtr timer_;
 };
