@@ -13,7 +13,7 @@ class Smartphone: public rclcpp::Node
     private: 
 
         rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr subscriber;
-
+        rclcpp::TimerBase::SharedPtr timer_;
 }; 
 
 
