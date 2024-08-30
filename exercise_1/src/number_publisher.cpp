@@ -10,7 +10,32 @@ class NumberPublisher: public rclcpp::Node
         NumberPublisher(): Node("number_publisher")
         { 
             RCLCPP_INFO(this->get_logger(), "This is number_publisher");
+
+            publisher = this->create_publisher<example_interfaces::msg::Int64>("number_publisher", 10);
+
+            timer_ = this->create_wall_timer(
+                std::chrono::seconds(1),
+                std::bind(&NumberPublisher::PublishNumber, this)
+            );
+
         }
+        
+
+    private: 
+        void PublishNumber()
+        {
+            auto msg = example_interfaces::msg::Int64(); 
+            msg.data = counter; 
+            publisher->publish(msg); 
+
+            counter += 2;
+        }
+
+
+
+        int counter = 1; 
+        rclcpp::Publisher<example_interfaces::msg::Int64>::SharedPtr publisher; 
+        rclcpp::TimerBase::SharedPtr timer_;
 }; 
 
 
