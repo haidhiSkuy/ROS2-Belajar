@@ -25,15 +25,9 @@ class NumberPublisher: public rclcpp::Node
         void PublishNumber()
         {
             auto msg = example_interfaces::msg::Int64(); 
-            msg.data = counter; 
+            msg.data = 2; 
             publisher->publish(msg); 
-
-            counter += 2;
         }
-
-
-
-        int counter = 1; 
         rclcpp::Publisher<example_interfaces::msg::Int64>::SharedPtr publisher; 
         rclcpp::TimerBase::SharedPtr timer_;
 }; 
