@@ -24,6 +24,7 @@ def main(args=None):
     # Get response
     try: 
         response = future.result()
+        node.get_logger().info(f"Respose : {response.sum}")
     except Exception as e: 
         node.get_logger().error(f"Failed {e}")
 
