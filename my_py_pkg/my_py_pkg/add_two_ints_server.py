@@ -2,7 +2,7 @@ import rclpy # ROS library
 from rclpy.node import Node
 from example_interfaces.srv import AddTwoInts
 
-class AddTowIntsServerNode(Node): 
+class AddTwoIntsServerNode(Node): 
     def __init__(self): 
         super().__init__("add_two_ints_server")
         self.server = self.create_service(AddTwoInts, "add_two_ints", self.callback_add_two_ints)
@@ -18,7 +18,7 @@ class AddTowIntsServerNode(Node):
 
 def main(args=None): 
     rclpy.init(args=args) 
-    node = AddTowIntsServerNode()
+    node = AddTwoIntsServerNode()
     rclpy.spin(node)
     rclpy.shutdown()
 
