@@ -13,7 +13,7 @@ class HardwareStatusPublisherNode(Node):
 
     def publish_hw_status(self): 
         msg = HardwareStatus() 
-        msg.temperature = 45 
+        msg.temperatures = 45 
         msg.are_motors_ready = True 
         msg.debug_message = "this is custom msg"
         self.publisher.publish(msg)
