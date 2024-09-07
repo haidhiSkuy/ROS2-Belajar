@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(example_interfaces REQUIRED)
+find_package(my_robot_interfaces REQUIRED) # add custom msg here
 
 # Add executable file from .cpp file
 add_executable(cpp_node src/my_first_node.cpp)
@@ -26,12 +27,16 @@ ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
 add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 
+add_executable(hw_status_publisher src/hw_status_publisher.cpp)
+ament_target_dependencies(hw_status_publisher rclcpp my_robot_interfaces) # link with custom msg
+ 
 install(TARGETS 
   cpp_node 
   robot_news_station 
   smartphone
   add_two_ints_server
   add_two_ints_client
+  hw_status_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
