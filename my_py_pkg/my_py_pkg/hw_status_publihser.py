@@ -1,6 +1,9 @@
 import rclpy 
 from rclpy.node import Node 
 
+# import create custom msg
+from robot_news_station.msg import HardwareStatus
+
 class HardwareStatusPublisherNode(Node): 
     def __init__(self): 
         super().__init__("hardware_status_publisher") 
