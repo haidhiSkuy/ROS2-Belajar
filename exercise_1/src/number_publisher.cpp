@@ -18,6 +18,9 @@ class NumberPublisher: public rclcpp::Node
                 std::bind(&NumberPublisher::PublishNumber, this)
             );
 
+            // declare parameter 
+            this->declare_parameter<std::string>("test123", "wkwk");
+
         }
         
 
