@@ -16,7 +16,7 @@ class RobotNewsStationNode(Node):
 
     def publish_news(self): 
         msg = String()
-        msg.data = "Hello"
+        msg.data = self.get_parameter("msg_data")
         self.publisher.publish(msg)
 
 def main(args=None): 
