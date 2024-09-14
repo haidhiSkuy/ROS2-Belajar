@@ -9,6 +9,10 @@ class RobotNewsStationNode: public rclcpp::Node
         RobotNewsStationNode(): Node("robot_news_station")
         {
             RCLCPP_INFO(this->get_logger(), "Hello This is publisher");  
+
+            // decalare robot_name parameter 
+            this->declare_parameter<std::string>("robot_name", "sans");
+
                                                                         //robot_news is the name of topic you want to send data to it
             publisher = this->create_publisher<example_interfaces::msg::String>("robot_news", 10);
 
@@ -23,15 +27,15 @@ class RobotNewsStationNode: public rclcpp::Node
         { 
             auto msg = example_interfaces::msg::String();
             std::ostringstream oss;
-            oss << "Hello " << counter; 
+
+            robot_name = this->get_parameter("robot_name").as_string();
+            oss << "Hi, this is " << robot_name; 
 
             msg.data = oss.str();
             publisher->publish(msg);  
-
-            counter += 1;
         }
 
-        int counter = 1; 
+        std::string robot_name; 
         rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher;
         rclcpp::TimerBase::SharedPtr timer_;
 };
