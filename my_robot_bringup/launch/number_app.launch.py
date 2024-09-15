@@ -6,12 +6,14 @@ def generate_launch_description():
 
     number_publisher_node = Node(
         package="exercise_1", 
-        executable="number_publisher"
+        executable="number_publisher", 
+        name="my_number_publisher"  # node name
     )
 
     number_counter_node = Node( 
         package="exercise_1", 
-        executable="number_counter"
+        executable="number_counter", 
+        name="my_number_counter"
     )
 
     ld.add_action(number_publisher_node)
