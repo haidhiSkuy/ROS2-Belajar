@@ -12,6 +12,10 @@ def generate_launch_description():
         name="my_number_publisher",  # node name 
         remappings=[
             remap_number_topic
+        ], 
+        parameters=[
+            {"test123" : "sanszzz"},
+            {"number" : 10}
         ]
     )
 
