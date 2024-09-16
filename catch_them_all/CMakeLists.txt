@@ -13,10 +13,10 @@ find_package(my_robot_interfaces REQUIRED)
 find_package(turtlesim REQUIRED) 
 
 add_executable(turtle_controller src/turtle_controller.cpp)
-ament_target_dependencies(turtle_controller rclcpp my_robot_interfaces)
+ament_target_dependencies(turtle_controller rclcpp my_robot_interfaces turtlesim)
 
 add_executable(turtle_spawner src/turtle_spawner.cpp)
-ament_target_dependencies(turtle_spawner rclcpp my_robot_interfaces)
+ament_target_dependencies(turtle_spawner rclcpp my_robot_interfaces turtlesim)
 
 install(TARGETS 
   turtle_controller
