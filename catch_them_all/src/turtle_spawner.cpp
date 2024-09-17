@@ -16,9 +16,6 @@ class TurtleSpawner : public rclcpp::Node
                 std::chrono::seconds(3),
                 std::bind(&TurtleSpawner::PublishSpawnNpcTurtles, this)
             );
-
-            // thread_.push_back(std::thread(std::bind(&TurtleSpawner::Spawn, this, "npc_1", 3.0, 3.0)));
-
         }  
     
     private: 
